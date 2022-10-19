@@ -6,6 +6,7 @@
 #define TMP_TRAITS_H
 
 #include <string>
+#include <string.h>
 #include <cctype>
 
 namespace traits {
@@ -55,7 +56,7 @@ namespace traits {
         OutIt copy_helper(InIt first, InIt last, OutIt out, true_t) {
             std::cout << "using fast copy_helper for OutIt = " << typeid(OutIt).name() << '\n';
             size_t count = (last - first);
-            std::memmove(out, first, count * sizeof(*first));
+            memmove(out, first, count * sizeof(*first));
             return out + count;
         }
 
